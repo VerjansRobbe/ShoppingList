@@ -18,7 +18,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/back_design"
-                android:text="Add shopping list"
+                android:text="Add new item"
                 android:gravity="center"
                 android:textAppearance="?android:textAppearanceMedium"
                 android:textColor="@android:color/white"

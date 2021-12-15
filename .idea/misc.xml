@@ -5,10 +5,11 @@
       <map>
         <entry key="..\:/Users/Robbe/AndroidStudioProjects/Shoppinglist/app/src/main/res/drawable/back_design.xml" value="0.2890625" />
         <entry key="..\:/Users/Robbe/AndroidStudioProjects/Shoppinglist/app/src/main/res/drawable/edit_design.xml" value="0.2890625" />
-        <entry key="..\:/Users/Robbe/AndroidStudioProjects/Shoppinglist/app/src/main/res/layout/activity_home.xml" value="0.25" />
+        <entry key="..\:/Users/Robbe/AndroidStudioProjects/Shoppinglist/app/src/main/res/layout/activity_home.xml" value="0.1" />
         <entry key="..\:/Users/Robbe/AndroidStudioProjects/Shoppinglist/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/Users/Robbe/AndroidStudioProjects/Shoppinglist/app/src/main/res/layout/activity_registration.xml" value="0.14270833333333333" />
         <entry key="..\:/Users/Robbe/AndroidStudioProjects/Shoppinglist/app/src/main/res/layout/input_data.xml" value="0.2" />
+        <entry key="..\:/Users/Robbe/AndroidStudioProjects/Shoppinglist/app/src/main/res/layout/item_data.xml" value="0.25" />
         <entry key="..\:/Users/Robbe/AndroidStudioProjects/Shoppinglist/app/src/main/res/layout/toolbar.xml" value="0.14270833333333333" />
       </map>
     </option>
