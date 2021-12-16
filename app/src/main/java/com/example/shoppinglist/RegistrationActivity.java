@@ -22,6 +22,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
     private EditText email;
     private EditText password;
+    private EditText repeatPassword;
     private TextView signin;
     private Button registrationButton;
 
@@ -41,6 +42,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
         email=findViewById(R.id.email_registration);
         password=findViewById(R.id.password_registration);
+        repeatPassword = findViewById(R.id.repeat_password_registration);
         registrationButton=findViewById(R.id.btn_registration);
         signin=findViewById(R.id.signin_text);
 
@@ -49,6 +51,7 @@ public class RegistrationActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String mEmail = email.getText().toString().trim();
                 String mPassword = password.getText().toString().trim();
+                String mRepeatPassword = repeatPassword.getText().toString().trim();
 
                 if(TextUtils.isEmpty(mEmail))
                 {
@@ -58,6 +61,12 @@ public class RegistrationActivity extends AppCompatActivity {
                 if(TextUtils.isEmpty(mPassword))
                 {
                     password.setError("Required field");
+                    return;
+                }
+                if(mPassword!=mRepeatPassword)
+                {
+                    Toast.makeText(getApplicationContext(), "Passwords don't match", Toast.LENGTH_SHORT).show();
+
                     return;
                 }
 

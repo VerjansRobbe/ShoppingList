@@ -46,6 +46,16 @@
                 android:textColorHint="@android:color/white"
                 android:id="@+id/password_registration" />
 
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:hint="Repeat password:"
+                android:inputType="textPassword"
+                android:textColor="@android:color/white"
+                android:textColorHint="@android:color/white"
+                android:id="@+id/repeat_password_registration" />
+
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

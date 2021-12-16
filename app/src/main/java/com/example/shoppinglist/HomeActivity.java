@@ -125,11 +125,20 @@ public class HomeActivity extends AppCompatActivity {
         dialog.show();
     }
 
+    //Zoek vanaf hieronder nog de error
+
     @Override
     protected void onStart() {
         super.onStart();
 
-        FirebaseRecyclerAdapter<Data, MyViewHolder>adapter=new FirebaseRecyclerAdapter<Data, MyViewHolder>(Data.class, R.layout.item_data, MyViewHolder.class, mDatabase) {
+        FirebaseRecyclerAdapter<Data, MyViewHolder>adapter=new FirebaseRecyclerAdapter<Data, MyViewHolder>
+                (
+                        Data.class,
+                        R.layout.item_data,
+                        MyViewHolder.class,
+                        mDatabase
+                )
+        {
             @Override
             protected void populateViewHolder(MyViewHolder viewHolder, Data model, int i) {
 
