@@ -32,29 +32,6 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="2">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Total amount:"
-                            android:padding="10dp"
-                            android:textAppearance="?android:textAppearanceMedium"
-                            />
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="2">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="0000"
-                            android:id="@+id/total_amount"
-                            android:padding="10dp"
-                            android:textAppearance="?android:textAppearanceMedium"
-                            />
                     </RelativeLayout>
 
 

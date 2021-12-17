@@ -1,5 +1,6 @@
 package com.example.shoppinglist;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -19,8 +20,11 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import org.w3c.dom.Text;
 
@@ -36,6 +40,12 @@ public class HomeActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
 
     private RecyclerView recyclerView;
+
+
+    private String name;
+    private String amount;
+    private String note;
+    private String post_key;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,16 +85,16 @@ public class HomeActivity extends AppCompatActivity {
 
     private void customDialog()
     {
-        AlertDialog.Builder mydialog=new AlertDialog.Builder(HomeActivity.this);
+        AlertDialog.Builder myDialog=new AlertDialog.Builder(HomeActivity.this);
         LayoutInflater inflater = LayoutInflater.from(HomeActivity.this);
-        View myview = inflater.inflate(R.layout.input_data, null);
-        AlertDialog dialog = mydialog.create();
-        dialog.setView(myview);
+        View myView = inflater.inflate(R.layout.input_data, null);
+        AlertDialog dialog = myDialog.create();
+        dialog.setView(myView);
 
-        EditText name = myview.findViewById(R.id.edt_name);
-        EditText amount = myview.findViewById(R.id.edt_amount);
-        EditText note = myview.findViewById(R.id.edt_note);
-        Button saveButton = myview.findViewById(R.id.save_btn);
+        EditText name = myView.findViewById(R.id.edt_name);
+        EditText amount = myView.findViewById(R.id.edt_amount);
+        EditText note = myView.findViewById(R.id.edt_note);
+        Button saveButton = myView.findViewById(R.id.save_btn);
 
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -140,12 +150,26 @@ public class HomeActivity extends AppCompatActivity {
                 )
         {
             @Override
-            protected void populateViewHolder(MyViewHolder viewHolder, Data model, int i) {
+            protected void populateViewHolder(MyViewHolder viewHolder, Data model, int position) {
 
                 viewHolder.setDate(model.getDate());
                 viewHolder.setName(model.getName());
                 viewHolder.setNote(model.getNote());
                 viewHolder.setAmount(model.getAmount());
+
+                viewHolder.myview.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        post_key=getRef(position).getKey();
+                        name = model.getName();
+                        note = model.getNote();
+                        amount = model.getAmount();
+
+
+                        updateData();
+                    }
+                });
             }
         };
 
@@ -181,5 +205,61 @@ public class HomeActivity extends AppCompatActivity {
             mAmount.setText(amount);
         }
 
+    }
+
+    public void updateData()
+    {
+        AlertDialog.Builder myDialog = new AlertDialog.Builder(HomeActivity.this);
+        LayoutInflater inflater = LayoutInflater.from(HomeActivity.this);
+
+        View mView = inflater.inflate(R.layout.update_item_data, null);
+
+        AlertDialog dialog = myDialog.create();
+        dialog.setView(mView);
+
+        final EditText edtName=mView.findViewById(R.id.edt_name_update);
+        final EditText edtAmount=mView.findViewById(R.id.edt_amount_update);
+        final EditText edtNote=mView.findViewById(R.id.edt_note_update);
+
+        edtName.setText(name);
+        edtName.setSelection(name.length());
+        edtAmount.setText(amount);
+        edtAmount.setSelection(amount.length());
+        edtNote.setText(note);
+        edtNote.setSelection(note.length());
+
+        Button updateButton=mView.findViewById(R.id.update_btn);
+        Button deleteButton=mView.findViewById(R.id.delete_btn);
+
+        updateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                name = edtName.getText().toString().trim();
+                amount = edtAmount.getText().toString().trim();
+                note = edtNote.getText().toString().trim();
+
+                String date=DateFormat.getDateInstance().format(new Date());
+                Data data = new Data(name, amount, note, date, post_key);
+
+                mDatabase.child(post_key).setValue(data);
+
+                dialog.dismiss();
+
+            }
+        });
+
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                mDatabase.child(post_key).removeValue();
+
+                dialog.dismiss();
+            }
+        });
+
+
+        dialog.show();
     }
 }

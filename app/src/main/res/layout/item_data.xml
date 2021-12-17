@@ -19,14 +19,13 @@
             android:layout_height="wrap_content">
 
             <TextView
+                android:id="@+id/date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:padding="10dp"
                 android:text="15 december 2021"
                 android:textAppearance="?android:textAppearanceMedium"
-                android:id="@+id/date"
-                android:padding="5dp"
-                android:textColor="#000000"
-                />
+                android:textColor="#FFFFFF" />
 
         </RelativeLayout>
 
@@ -42,7 +41,7 @@
                 android:maxLines="1"
                 android:text="Title"
                 android:textAppearance="?android:textAppearanceLarge"
-                android:textColor="#000000" />
+                android:textColor="#FFFFFF" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -52,7 +51,7 @@
                 android:textAppearance="?android:textAppearanceSmall"
                 android:id="@+id/note"
                 android:layout_below="@+id/name"
-                android:textColor="#000000"
+                android:textColor="#FFFFFF"
                 />
 
 
@@ -64,14 +63,13 @@
             android:layout_height="wrap_content">
 
             <TextView
+                android:id="@+id/amount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="5000"
-                android:textAppearance="?android:textAppearanceMedium"
-                android:id="@+id/amount"
                 android:padding="5dp"
-                android:textColor="#000000"
-                />
+                android:text="5000"
+                android:textAppearance="?android:textAppearanceSmall"
+                android:textColor="#FFFFFF" />
 
         </RelativeLayout>
 

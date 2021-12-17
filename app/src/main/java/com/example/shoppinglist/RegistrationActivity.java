@@ -63,10 +63,14 @@ public class RegistrationActivity extends AppCompatActivity {
                     password.setError("Required field");
                     return;
                 }
-                if(mPassword!=mRepeatPassword)
+                if(TextUtils.isEmpty(mRepeatPassword))
                 {
-                    Toast.makeText(getApplicationContext(), "Passwords don't match", Toast.LENGTH_SHORT).show();
-
+                    repeatPassword.setError("Required field");
+                    return;
+                }
+                if(!mPassword.equals(mRepeatPassword))
+                {
+                    Toast.makeText(getApplicationContext(), "Passwords match", Toast.LENGTH_SHORT).show();
                     return;
                 }
 

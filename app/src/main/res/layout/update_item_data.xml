@@ -18,7 +18,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/back_design"
-                android:text="Add new item"
+                android:text="Update item"
                 android:gravity="center"
                 android:textAppearance="?android:textAppearanceMedium"
                 android:textColor="@android:color/white"
@@ -50,10 +50,13 @@
                     android:layout_height="wrap_content">
 
                     <EditText
+                        android:id="@+id/edt_name_update"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/edt_name"
-                        android:layout_margin="10dp" />
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp" />
 
 
                 </RelativeLayout>
@@ -85,10 +88,13 @@
                     android:layout_height="wrap_content">
 
                     <EditText
+                        android:id="@+id/edt_amount_update"
                         android:layout_width="match_parent"
-                        android:layout_margin="10dp"
                         android:layout_height="wrap_content"
-                        android:id="@+id/edt_amount"/>
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp" />
 
 
                 </RelativeLayout>
@@ -123,22 +129,59 @@
                         android:layout_width="match_parent"
                         android:layout_margin="10dp"
                         android:layout_height="wrap_content"
-                        android:id="@+id/edt_note"/>
+                        android:id="@+id/edt_note_update"/>
 
 
                 </RelativeLayout>
 
             </LinearLayout>
 
-            <Button
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:background="@drawable/back_design"
-                android:text="Save"
-                android:textAppearance="?android:textAppearanceMedium"
-                android:textColor="@android:color/white"
-                android:id="@+id/save_btn"/>
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content" >
+
+                    <Button
+                        android:id="@+id/delete_btn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/back_design"
+                        android:text="Delete"
+                        android:textAppearance="?android:textAppearanceMedium"
+                        android:textColor="@android:color/white" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content" >
+
+                    <Button
+                        android:id="@+id/update_btn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/back_design"
+                        android:text="Update"
+                        android:textAppearance="?android:textAppearanceMedium"
+                        android:textColor="@android:color/white" />
+                </RelativeLayout>
+
+
+
+            </LinearLayout>
 
 
 
