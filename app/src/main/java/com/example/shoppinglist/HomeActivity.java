@@ -39,6 +39,7 @@ import Model.Data;
 public class HomeActivity extends AppCompatActivity {
 
     private FloatingActionButton fab_button;
+    private FloatingActionButton fab_delete_button;
     private DatabaseReference mDatabase;
     private FirebaseAuth mAuth;
 
@@ -88,6 +89,14 @@ public class HomeActivity extends AppCompatActivity {
                 customDialog();
             }
         });
+
+        fab_delete_button=findViewById(R.id.fabDelete);
+        fab_delete_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                customDeleteDialog();
+            }
+        });
     }
 
     private void customDialog()
@@ -130,6 +139,39 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         dialog.show();
+    }
+
+    private void customDeleteDialog(){
+
+        AlertDialog.Builder myDialog=new AlertDialog.Builder(HomeActivity.this);
+        LayoutInflater inflater = LayoutInflater.from(HomeActivity.this);
+        View myView = inflater.inflate(R.layout.delete_all_items, null);
+        AlertDialog dialog = myDialog.create();
+        dialog.setView(myView);
+
+        Button cancelDeleteButton = myView.findViewById(R.id.cancelDelete_btn);
+        Button confirmDeleteButton = myView.findViewById(R.id.confirmDelete_btn);
+
+        confirmDeleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                mDatabase.removeValue();
+
+                Toast.makeText(getApplicationContext(), "All data deleted", Toast.LENGTH_SHORT).show();
+
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
+
+        cancelDeleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+
     }
 
     @Override
@@ -241,6 +283,8 @@ public class HomeActivity extends AppCompatActivity {
 
                 dialog.dismiss();
 
+                Toast.makeText(getApplicationContext(), "Data updated", Toast.LENGTH_SHORT).show();
+
             }
         });
 
@@ -251,6 +295,8 @@ public class HomeActivity extends AppCompatActivity {
                 mDatabase.child(post_key).removeValue();
 
                 dialog.dismiss();
+
+                Toast.makeText(getApplicationContext(), "Data deleted", Toast.LENGTH_SHORT).show();
             }
         });
         dialog.show();

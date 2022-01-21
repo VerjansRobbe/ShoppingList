@@ -4,11 +4,13 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Robbe/AndroidStudioProjects/Shoppinglist/app/src/main/res/drawable-anydpi/Logout.xml" value="0.15885416666666666" />
+        <entry key="..\:/Users/Robbe/AndroidStudioProjects/Shoppinglist/app/src/main/res/drawable-anydpi/deleteAll.xml" value="0.1515625" />
         <entry key="..\:/Users/Robbe/AndroidStudioProjects/Shoppinglist/app/src/main/res/drawable/back_design.xml" value="0.2890625" />
         <entry key="..\:/Users/Robbe/AndroidStudioProjects/Shoppinglist/app/src/main/res/drawable/edit_design.xml" value="0.2890625" />
         <entry key="..\:/Users/Robbe/AndroidStudioProjects/Shoppinglist/app/src/main/res/layout/activity_home.xml" value="0.22" />
         <entry key="..\:/Users/Robbe/AndroidStudioProjects/Shoppinglist/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/Users/Robbe/AndroidStudioProjects/Shoppinglist/app/src/main/res/layout/activity_registration.xml" value="0.14270833333333333" />
+        <entry key="..\:/Users/Robbe/AndroidStudioProjects/Shoppinglist/app/src/main/res/layout/delete_all_items.xml" value="0.1" />
         <entry key="..\:/Users/Robbe/AndroidStudioProjects/Shoppinglist/app/src/main/res/layout/input_data.xml" value="0.2" />
         <entry key="..\:/Users/Robbe/AndroidStudioProjects/Shoppinglist/app/src/main/res/layout/item_data.xml" value="0.25" />
         <entry key="..\:/Users/Robbe/AndroidStudioProjects/Shoppinglist/app/src/main/res/layout/toolbar.xml" value="0.14270833333333333" />
@@ -16,6 +18,7 @@
         <entry key="..\:/Users/Robbe/AndroidStudioProjects/Shoppinglist/app/src/main/res/layout/update_item_data.xml" value="0.13272543059777103" />
         <entry key="..\:/Users/Robbe/AndroidStudioProjects/Shoppinglist/app/src/main/res/layout/updated_inputfield.xml" value="0.13272543059777103" />
         <entry key="..\:/Users/Robbe/AndroidStudioProjects/Shoppinglist/app/src/main/res/menu/main_menu.xml" value="0.14270833333333333" />
+        <entry key="..\:/Users/Robbe/AndroidStudioProjects/Shoppinglist/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.15185185185185185" />
       </map>
     </option>
   </component>

@@ -75,7 +75,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 }
                 if(!mPassword.equals(mRepeatPassword))
                 {
-                    Toast.makeText(getApplicationContext(), "Passwords match", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Passwords don't match", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -89,12 +89,12 @@ public class RegistrationActivity extends AppCompatActivity {
                         if(task.isSuccessful())
                         {
                             startActivity(new Intent(getApplicationContext(),HomeActivity.class));
-                            Toast.makeText(getApplicationContext(), "Succesfull", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Account successfully created", Toast.LENGTH_SHORT).show();
                             mDialog.dismiss();
                         }
                         else
                         {
-                            Toast.makeText(getApplicationContext(), "Failed", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Account creation failed", Toast.LENGTH_SHORT).show();
                             mDialog.dismiss();
                         }
 

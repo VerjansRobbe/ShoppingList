@@ -61,6 +61,16 @@
             android:src="@drawable/plus"
             android:backgroundTint="#FFFFFF"/>
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="match_parent"
+            android:layout_gravity="bottom|start"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            app:fabSize="normal"
+            android:id="@+id/fabDelete"
+            android:src="@drawable/delete_all"
+            android:backgroundTint="#FFFFFF"/>
+
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 
