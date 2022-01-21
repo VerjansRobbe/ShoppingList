@@ -2,19 +2,22 @@ package com.example.shoppinglist;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
+import androidx.appcompat.widget.Toolbar;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -41,6 +44,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
 
+    private Toolbar toolbar;
 
     private String name;
     private String amount;
@@ -52,6 +56,9 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+
+        toolbar=findViewById(R.id.home_toolbar);
+        setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Shopping list");
 
         mAuth = FirebaseAuth.getInstance();
@@ -109,16 +116,6 @@ public class HomeActivity extends AppCompatActivity {
                     name.setError("Required field");
                     return;
                 }
-                if(TextUtils.isEmpty(mAmount))
-                {
-                    amount.setError("Required field");
-                    return;
-                }
-                if(TextUtils.isEmpty(mNote))
-                {
-                    note.setError("Required field");
-                    return;
-                }
 
                 String id = mDatabase.push().getKey();
                 String date = DateFormat.getDateInstance().format(new Date());
@@ -134,8 +131,6 @@ public class HomeActivity extends AppCompatActivity {
 
         dialog.show();
     }
-
-    //Zoek vanaf hieronder nog de error
 
     @Override
     protected void onStart() {
@@ -258,8 +253,25 @@ public class HomeActivity extends AppCompatActivity {
                 dialog.dismiss();
             }
         });
-
-
         dialog.show();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        switch (item.getItemId()){
+            case R.id.log_out:
+                mAuth.signOut();
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

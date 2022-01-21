@@ -24,8 +24,7 @@
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:text="15 december 2021"
-                android:textAppearance="?android:textAppearanceMedium"
-                android:textColor="#FFFFFF" />
+                android:textAppearance="?android:textAppearanceMedium" />
 
         </RelativeLayout>
 
@@ -40,19 +39,16 @@
                 android:layout_height="wrap_content"
                 android:maxLines="1"
                 android:text="Title"
-                android:textAppearance="?android:textAppearanceLarge"
-                android:textColor="#FFFFFF" />
+                android:textAppearance="?android:textAppearanceLarge" />
 
             <TextView
+                android:id="@+id/note"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Note"
-                android:maxLines="1"
-                android:textAppearance="?android:textAppearanceSmall"
-                android:id="@+id/note"
                 android:layout_below="@+id/name"
-                android:textColor="#FFFFFF"
-                />
+                android:maxLines="1"
+                android:text="Note"
+                android:textAppearance="?android:textAppearanceSmall" />
 
 
         </RelativeLayout>
@@ -67,9 +63,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
-                android:text="5000"
-                android:textAppearance="?android:textAppearanceSmall"
-                android:textColor="#FFFFFF" />
+                android:text="5"
+                android:textAppearance="?android:textAppearanceSmall" />
 
         </RelativeLayout>
 

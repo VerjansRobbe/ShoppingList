@@ -68,6 +68,11 @@ public class RegistrationActivity extends AppCompatActivity {
                     repeatPassword.setError("Required field");
                     return;
                 }
+                if(mPassword.length()<8)
+                {
+                    password.setError("Password must contain at least 8 characters");
+                    return;
+                }
                 if(!mPassword.equals(mRepeatPassword))
                 {
                     Toast.makeText(getApplicationContext(), "Passwords match", Toast.LENGTH_SHORT).show();
