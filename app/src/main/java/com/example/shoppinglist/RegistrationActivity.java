@@ -3,7 +3,6 @@ package com.example.shoppinglist;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.accessibilityservice.AccessibilityService;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -22,44 +21,41 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class MainActivity extends AppCompatActivity {
+public class RegistrationActivity extends AppCompatActivity {
 
     private EditText email;
     private EditText password;
-    private Button loginButton;
-    private TextView signUp;
+    private EditText repeatPassword;
+    private TextView signin;
+    private Button registrationButton;
 
     private FirebaseAuth mAuth;
 
     private ProgressDialog mDialog;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
+        setContentView(R.layout.activity_registration);
+        
         mAuth=FirebaseAuth.getInstance();
-
-        //Als er een user is aangemeld van de vorige keer nog, word deze automatisch ingelogd.
-        if(mAuth.getCurrentUser()!=null)
-        {
-            startActivity(new Intent(getApplicationContext(),HomeActivity.class));
-        }
 
         mDialog=new ProgressDialog(this);
 
-        email=findViewById(R.id.email_login);
-        password=findViewById(R.id.password_login);
-        loginButton=findViewById(R.id.btn_login);
-        signUp=findViewById(R.id.signup_text);
+        email=findViewById(R.id.email_registration);
+        password=findViewById(R.id.password_registration);
+        repeatPassword = findViewById(R.id.repeat_password_registration);
+        registrationButton=findViewById(R.id.btn_registration);
+        signin=findViewById(R.id.signin_text);
 
-        //De user klikt op de login knop
-        loginButton.setOnClickListener(new View.OnClickListener() {
+        registrationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //Alle velden worden uitgelezen, naar een string omgezet, getrimd en in variabelen gestoken
-                String mEmail=email.getText().toString().trim();
-                String mPassword=password.getText().toString().trim();
+                String mEmail = email.getText().toString().trim();
+                String mPassword = password.getText().toString().trim();
+                String mRepeatPassword = repeatPassword.getText().toString().trim();
 
                 //Roept de methode isConnected aan om te zien of er wel een internetverbinding is.
                 if(!isConnected(this))
@@ -68,50 +64,71 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
 
-                //Email moet ingevuld zijn
+                //het veld "email" moet ingevuld zijn
                 if(TextUtils.isEmpty(mEmail))
                 {
                     email.setError("Required field");
                     return;
                 }
-
-                //wachtwoord moet ingevuld zijn
+                //Het veld "wachtwoord" moet ingevuld zijn
                 if(TextUtils.isEmpty(mPassword))
                 {
                     password.setError("Required field");
+                    return;
+                }
+                //Het veld "herhaal wachtwoord" moet ingevuld zijn
+                if(TextUtils.isEmpty(mRepeatPassword))
+                {
+                    repeatPassword.setError("Required field");
+                    return;
+                }
+                //De lengte van het wachtwoord moet minstens 8 karakters bevatten
+                if(mPassword.length()<8)
+                {
+                    password.setError("Password must contain at least 8 characters");
+                    return;
+                }
+                //Het wachtwoord moet gelijk zijn aan het herhaalde wachtwoord
+                if(!mPassword.equals(mRepeatPassword))
+                {
+                    Toast.makeText(getApplicationContext(), "Passwords don't match", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 mDialog.setMessage("Processing");
                 mDialog.show();
 
-                //De login gebeurt hier pas. En word de HomeActivity opgeroepen
-                mAuth.signInWithEmailAndPassword(mEmail,mPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                //Hier word de user aangemaakt in de database en word HomeActivity geladen
+                mAuth.createUserWithEmailAndPassword(mEmail,mPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
+
                         if(task.isSuccessful())
                         {
-                            startActivity(new Intent(getApplicationContext(), HomeActivity.class));
-                            Toast.makeText(getApplicationContext(),"Login successful", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(getApplicationContext(),HomeActivity.class));
+                            Toast.makeText(getApplicationContext(), "Account successfully created", Toast.LENGTH_SHORT).show();
                             mDialog.dismiss();
                         }
                         else
                         {
-                            Toast.makeText(getApplicationContext(),"Login failed",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Account creation failed", Toast.LENGTH_SHORT).show();
                             mDialog.dismiss();
                         }
+
                     }
                 });
             }
         });
 
-        //Hier word er doorverwezen naar de RegistrationActivity om een account aan te maken.
-        signUp.setOnClickListener(new View.OnClickListener() {
+        //Hier word er doorverwezen naar de MainActivity om in te loggen als je al een account zou hebben
+        signin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), RegistrationActivity.class));
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
             }
         });
+
+
     }
 
     //Hier word er getest of er wel een internetverbinding aanwezig is.
@@ -127,5 +144,6 @@ public class MainActivity extends AppCompatActivity {
             connected = false;
         }
         return connected;
+
     }
 }
