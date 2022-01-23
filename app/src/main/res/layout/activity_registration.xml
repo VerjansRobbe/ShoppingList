@@ -69,7 +69,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:textAppearanceSmall"
-                android:text="already have an account? Sign in here"
+                android:text="Already have an account? Sign in here"
                 android:gravity="center"
                 android:textColor="@android:color/white"
                 android:padding="5dp"

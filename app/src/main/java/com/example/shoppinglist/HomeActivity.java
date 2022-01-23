@@ -99,6 +99,7 @@ public class HomeActivity extends AppCompatActivity {
         });
     }
 
+    //Dit is de customdialog voor een item te updaten
     private void customDialog()
     {
         AlertDialog.Builder myDialog=new AlertDialog.Builder(HomeActivity.this);
@@ -112,6 +113,7 @@ public class HomeActivity extends AppCompatActivity {
         EditText note = myView.findViewById(R.id.edt_note);
         Button saveButton = myView.findViewById(R.id.save_btn);
 
+        //Hier word een nieuw item aangemaakt en opgeslagen in de database
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -141,6 +143,7 @@ public class HomeActivity extends AppCompatActivity {
         dialog.show();
     }
 
+    //Dit is de dialog om alle items te verwijderen uit de database
     private void customDeleteDialog(){
 
         AlertDialog.Builder myDialog=new AlertDialog.Builder(HomeActivity.this);
@@ -186,6 +189,7 @@ public class HomeActivity extends AppCompatActivity {
                         mDatabase
                 )
         {
+            //Hier word de de view gevuld met data uit de database
             @Override
             protected void populateViewHolder(MyViewHolder viewHolder, Data model, int position) {
 
@@ -244,6 +248,7 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
+    //Hier word een item geüpdate
     public void updateData()
     {
         AlertDialog.Builder myDialog = new AlertDialog.Builder(HomeActivity.this);
@@ -288,6 +293,7 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        //Hier word een item verwijderd uit de database
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -316,6 +322,7 @@ public class HomeActivity extends AppCompatActivity {
             case R.id.log_out:
                 mAuth.signOut();
                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                Toast.makeText(getApplicationContext(), "Logged out", Toast.LENGTH_SHORT).show();
                 break;
         }
         return super.onOptionsItemSelected(item);
